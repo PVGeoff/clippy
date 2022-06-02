@@ -11,7 +11,7 @@ $(function () {
   windowTopBar.style.webkitAppRegion = "drag";
   document.body.appendChild(windowTopBar);
   window.api.receive("copyText", (data) => {
-    let toAppend = `<p class="active copy-me">${data.text} <span><i class="fa fa-clipboard"></span></p>`;
+    let toAppend = `<p class="active copy-me">${data.text}</p>`;
     $(".text-append").append(toAppend);
     $("html, body").animate(
       {

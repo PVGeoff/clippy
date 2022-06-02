@@ -22,3 +22,4 @@ contextBridge.exposeInMainWorld("api", {
     }
   },
 });
+const [] = useState();
