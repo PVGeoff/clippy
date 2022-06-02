@@ -1,0 +1,27 @@
+body,
+html{
+  margin:0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: rgba(255, 244, 146, 0.678);
+
+}
+.top-bar{
+  color:white;
+  display: flex;
+  justify-content: end;
+  
+}
+.copy-me{
+  padding: 10px  5px 10px 5px;
+  border-bottom:1px solid black;
+  background:none;
+
+}
+
+::-webkit-scrollbar{
+  display:none;
+}
+.copy-me:hover{
+
+}
