@@ -1,0 +1,64 @@
+
+body,
+html,p{
+  margin:0;
+  padding: 0;
+  overflow-x: hidden;
+
+}
+html,body{
+  background-color: rgba(255, 244, 146, 0.356);
+}
+::-webkit-scrollbar{
+  display:none;
+}
+.note-container{
+  margin-top: 24px;
+
+
+}
+.titlebar{
+  width: 100%;
+  background: #000;
+  height: 24px;
+  position:absolute;
+  top: 0;
+  -webkit-app-region: drag;
+}
+.text-box{
+
+  padding: 10px 0px;
+  padding-left: 10px;
+
+  border-bottom: 1px solid black;
+ 
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
+}
+.fa-thumbtack{
+
+  transform: rotate(30deg);
+}
+.fa-thumbtack:hover{
+  color:rgba(29, 116, 230, 0.938);
+}
+.fa-close{
+  font-weight:900 !important;
+}
+.fa-close:hover{
+  color: rgb(255, 42, 42);
+}
+.text-box:hover{
+  background:white;
+}
+.edit-icon{
+  margin-right:20px;
+}

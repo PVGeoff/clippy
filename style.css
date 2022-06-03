@@ -3,7 +3,7 @@ html,p{
   margin:0;
   padding: 0;
   overflow-x: hidden;
-  background-color: rgb(255, 244, 146);
+  background-color: rgba(255, 244, 146, 0.267);
 }
 .top-bar{
   color:white;
@@ -24,4 +24,9 @@ html,p{
 }
 .copy-me:hover{
   background:white;
+  color:black;
+}
+.pin{
+  float:right;
+  z-index: 10;
 }

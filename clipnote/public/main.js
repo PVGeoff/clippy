@@ -2,6 +2,7 @@ const { app, BrowserWindow, globalShortcut, clipboard } = require("electron");
 const path = require("path");
 const clipboardListener = require("clipboard-event");
 let win;
+
 function createWindow() {
   win = new BrowserWindow({
     width: 400,
@@ -14,7 +15,7 @@ function createWindow() {
     },
   });
   win.setPosition(0, 0);
-  win.loadFile("index.html");
+  win.loadURL("http://localhost:3001");
 }
 
 app.whenReady().then(() => {
@@ -22,9 +23,12 @@ app.whenReady().then(() => {
   clipboardListener.startListening();
   clipboardListener.on("change", (e) => {
     let text = clipboard.readText();
-    win.webContents.send("copyText", {
-      text,
-    });
+    console.log(text);
+    if (text) {
+      win.webContents.send("copyText", {
+        text,
+      });
+    }
   });
 
   app.on("activate", () => {
