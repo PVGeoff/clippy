@@ -1,64 +1,74 @@
-
 body,
-html,p{
-  margin:0;
+html,
+p {
+  margin: 0;
   padding: 0;
-  overflow-x: hidden;
-
 }
-html,body{
+html,
+body {
   background-color: rgba(255, 244, 146, 0.356);
 }
-::-webkit-scrollbar{
-  display:none;
+::-webkit-scrollbar {
+  display: none;
 }
-.note-container{
+.note-container {
   margin-top: 24px;
-
-
 }
-.titlebar{
+.titlebar {
+  z-index: 1000;
   width: 100%;
   background: #000;
   height: 24px;
-  position:absolute;
+  position: fixed;
   top: 0;
+
   -webkit-app-region: drag;
 }
-.text-box{
-
+.text-box {
   padding: 10px 0px;
   padding-left: 10px;
 
   border-bottom: 1px solid black;
- 
-  width:100%;
-  display:flex;
+
+  width: 100%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 
-  -webkit-user-select: none; /* Safari */        
+  -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
-
 }
-.fa-thumbtack{
-
+.fa-thumbtack {
   transform: rotate(30deg);
 }
-.fa-thumbtack:hover{
-  color:rgba(29, 116, 230, 0.938);
+.fa-thumbtack:hover {
+  color: rgba(29, 116, 230, 0.76);
 }
-.fa-close{
-  font-weight:900 !important;
+.fa-close {
+  font-weight: 900 !important;
 }
-.fa-close:hover{
+.fa-close:hover {
   color: rgb(255, 42, 42);
 }
-.text-box:hover{
-  background:white;
+.text-box:hover {
+  background: white;
 }
-.edit-icon{
-  margin-right:20px;
+.edit-icon {
+  margin-right: 20px;
+}
+.color-preview {
+  width: 15px;
+  height: 15px;
+  margin-right: auto;
+  margin-left: 10px;
+  border-radius: 180px;
+}
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 24px;
+  z-index: 100;
+  background-color: rgb(252, 244, 180);
 }
