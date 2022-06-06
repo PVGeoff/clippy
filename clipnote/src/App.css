@@ -42,6 +42,7 @@ body {
 }
 .fa-thumbtack {
   transform: rotate(30deg);
+  color: rgb(0, 0, 0);
 }
 .fa-thumbtack:hover {
   color: rgba(29, 116, 230, 0.76);

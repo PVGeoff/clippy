@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 
 function AppendBox() {
   const [textList, setTextList] = useState([]);
+  const [id, setId] = useState(0);
   window.api.receive("copyText", (data) => {
     let text = data.text;
-    let regHex = /^(#[0-9a-z]{3,8})$/g;
+    console.log(text);
+    let regHex = /^(#?[0-9a-z]{3,8})$/g;
     let regRGB = /.*((rgba|rgb)\(\s*\d+,\s*\d+,\s*\d+(,\s0\.\d{1,3})*\)).*/g;
     let newObj = {
       content: text,
@@ -13,7 +15,11 @@ function AppendBox() {
       colorVal: null,
     };
     if (regHex.test(data.text)) {
-      newObj.colorVal = data.text.replace(regHex, "$1");
+      let toSet = data.text.replace(regHex, "$1");
+      if (!toSet.startsWith("#")) {
+        toSet = "#" + toSet;
+      }
+      newObj.colorVal = toSet;
     }
     if (regRGB.test(data.text)) {
       console.log("I'm an rgb");
@@ -21,10 +27,13 @@ function AppendBox() {
       console.log(toSet);
       newObj.colorVal = toSet;
     }
-
     let newList = [...textList];
-    let isInList = newList.find((e) => e.content == data.text);
+    let isInList = newList.find((e) => data.text.includes(e.content));
+
+    console.log(newList);
+    console.log(newObj.content);
     if (!isInList) {
+      console.log("I'm not in the list");
       newList.push(newObj);
       setTextList(newList);
     }
@@ -68,14 +77,10 @@ function AppendBox() {
                 onClick={handleOuter}
               >
                 <p>{entry.content}</p>
-                {entry.colorVal ? (
-                  <span
-                    className="color-preview"
-                    style={{ backgroundColor: entry.text }}
-                  >
-                    a
-                  </span>
-                ) : null}
+                <span
+                  className="color-preview"
+                  style={{ backgroundColor: entry.colorVal }}
+                ></span>
                 {!entry.isPinned ? (
                   <i
                     onClick={(e) => handlePin(e, entry.id)}
