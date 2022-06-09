@@ -2,24 +2,33 @@
   "name": "clipnote",
   "version": "0.1.0",
   "private": true,
-  "main": "public/main.js",
+  "author": "Geoffrey Gard",
+  "description": "A clipboard history manager",
+  "homepage": "./",
+  "main": "./public/main.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "clipboard-event": "^1.5.0",
-    "electron": "^19.0.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PVGeoff/clippy.git"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron-dev": "electron ."
+    "electron:start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electronmon .\"",
+    "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/main.js",
+    "electron:package:win": "yarn build && electron-builder -w --publish always -c.extraMetadata.main=build/main.js",
+    "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/main.js"
   },
   "eslintConfig": {
     "extends": [
@@ -29,14 +38,50 @@
   },
   "browserslist": {
     "production": [
+      "last 1 electron version",
       ">0.2%",
       "not dead",
       "not op_mini all"
     ],
     "development": [
+      "last 1 electron version",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "cross-env": "^7.0.3",
+    "electron-builder": "^23.0.3",
+    "electronmon": "^2.0.2",
+    "wait-on": "^6.0.1",
+    "electron": "^19.0.3"
+  },
+  "build": {
+    "appId": "com.electron.myapp",
+    "productName": "My App",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "PVGeoff",
+      "repo": "clippy",
+      "token": "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"
+    },
+    "directories": {
+      "buildResources": "public"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "deb"
+    }
   }
 }
