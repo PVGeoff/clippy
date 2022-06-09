@@ -1,4 +1,4 @@
-const { app, BrowserWindow, globalShortcut, clipboard } = require("electron");
+const { app, BrowserWindow, clipboard, protocol } = require("electron");
 const path = require("path");
 const url = require("url");
 const clipboardListener = require("clipboard-event");

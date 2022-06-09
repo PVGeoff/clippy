@@ -6,6 +6,7 @@
   "description": "A clipboard history manager",
   "homepage": "./",
   "main": "./public/main.js",
+  "productName": "Clipnote",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -27,7 +28,7 @@
     "eject": "react-scripts eject",
     "electron:start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electronmon .\"",
     "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/main.js",
-    "electron:package:win": "yarn build && electron-builder -w --publish always -c.extraMetadata.main=build/main.js",
+    "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/main.js",
     "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/main.js"
   },
   "eslintConfig": {
@@ -69,7 +70,7 @@
       "provider": "github",
       "owner": "PVGeoff",
       "repo": "clippy",
-      "token": "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"
+      "token": ""
     },
     "directories": {
       "buildResources": "public"
